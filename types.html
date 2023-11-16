@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Tipos de Jordan - Zapatillas Store</title>
+    <style>
+        .jordan-type {
+            display: none; /* Oculta todas las imágenes por defecto */
+        }
+
+        .jordan-type.active {
+            display: block; /* Muestra solo la imagen activa */
+        }
+
+        /* Estilos para el modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.7);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            max-width: 80%;
+            max-height: 80%;
+            margin: auto;
+        }
+
+        .modal-img {
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Estilos adicionales para cerrar el modal */
+        .close {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            color: #fff;
+            font-size: 20px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Zapatillas Store</h1>
+        <nav>
+            <ul>
+                <li><a href="../index.html#inicio">Inicio</a></li>
+                <li><a href="#tipos-jordan">Tipos de Jordan</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="tipos-jordan">
+        <h2>Tipos de Zapatillas Jordan</h2>
+
+        <!-- Utiliza un bucle for para generar dinámicamente las estructuras HTML -->
+        <!-- de acuerdo con los datos proporcionados en el array jordanData -->
+        <!-- Agrega más objetos de datos según sea necesario en el array jordanData -->
+
+        <!-- Esto es para cada tipo de Jordan en el array jordanData -->
+        <!-- En el bucle, establecemos un atributo data-index para realizar un seguimiento del índice del tipo de Jordan -->
+
+        <!-- Para mantener el formato de la pregunta inicial, solo mostraré la estructura de bucle y los cambios necesarios -->
+
+        <!-- El bucle for comienza aquí -->
+        <script>
+            var jordanData = [
+                {
+                    title: "Jordan 1",
+                    imageUrl: "https://i0.wp.com/net-stocks.com/wp-content/uploads/2021/08/air-jordan-1-mid-carbon-fiber-gs-2.png?fit=1000%2C600&ssl=1",
+                    description: "La icónica Jordan 1, diseñada por Peter Moore, lanzada en 1985."
+                },
+                {
+                    title: "Jordan 11",
+                    imageUrl: "https://nl.kicksmaniac.com/zdjecia/2019/12/20/912/14/10187378037_061_2.png",
+                    description: "Las Jordan 11, conocidas por su diseño elegante y suela translúcida."
+                },
+                {
+                    title: "Jordan 12",
+                    imageUrl: "https://images.squarespace-cdn.com/content/v1/5afceb6f5ffd2052611eff46/1594171233926-2EHB8J7IUH7BKK9UPE1C/air-jordan-12-university-gold-hallofsneakz.png?format=2500w",
+                    description: "Las Jordan 12, lanzadas en 1996, destacan por sus detalles en piel y diseño robusto."
+                },
+                {
+                    title: "Jordan 3",
+                    imageUrl: "https://example.com/jordan3-image.png",
+                    description: "Descripción del Jordan 3."
+                },
+                {
+                    title: "Jordan 5",
+                    imageUrl: "https://example.com/jordan5-image.png",
+                    description: "Descripción del Jordan 5."
+                }
+                // Agrega más objetos de datos según sea necesario
+            ];
+
+            for (var i = 0; i < jordanData.length; i++) {
+                document.write(`
+                    <div class="jordan-type ${i === 0 ? 'active' : ''}" id="jordan${i + 1}" data-index="${i}">
+                        <img src="${jordanData[i].imageUrl}" alt="${jordanData[i].title}" width=300 onclick="openModal('${jordanData[i].imageUrl}', '${jordanData[i].title}')">
+                        <h3>${jordanData[i].title}</h3>
+                        <p>${jordanData[i].description}</p>
+                        <button onclick="rotateImage('jordan${i + 1}', 'jordan${(i + 1) % jordanData.length + 1}')">Siguiente Imagen</button>
+                    </div>
+                `);
+            }
+        </script>
+        <!-- El bucle for termina aquí -->
+
+        <!-- Fin del bucle, ahora tienes estructuras HTML dinámicamente generadas -->
+
+        <!-- Agrega más tipos de Jordan según sea necesario -->
+
+        <!-- Añade la fecha y la hora actual -->
+        <div id="currentDateTime">
+            <p>Fecha y Hora actual: <span id="datetime"></span></p>
+        </div>
+    </section>
+
+    <!-- Modal para mostrar la imagen de forma más grande -->
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <img id="modalImg" class="modal-img" src="" alt="Zapatilla">
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2023 Zapatillas Store</p>
+    </footer>
+
+    <script>
+        function rotateImage(currentId, nextId) {
+            var currentImage = document.getElementById(currentId);
+            var nextImage = document.getElementById(nextId);
+
+            currentImage.classList.remove("active");
+            nextImage.classList.add("active");
+
+            updateText(nextId);
+        }
+
+        function updateText(currentId) {
+            var currentData = jordanData[parseInt(document.getElementById(currentId).dataset.index)];
+            var titleElement = document.getElementById(currentId).querySelector("h3");
+            var descriptionElement = document.getElementById(currentId).querySelector("p");
+
+            titleElement.textContent = currentData.title;
+            descriptionElement.textContent = currentData.description;
+        }
+
+        // Inicializa el texto para la primera imagen
+        updateText("jordan1");
+
+        // Función para abrir el modal con la imagen más grande
+        function openModal(imageUrl, title) {
+            var modal = document.getElementById("myModal");
+            var modalImg = document.getElementById("modalImg");
+
+            modal.style.display = "flex";
+            modalImg.src = imageUrl;
+            modalImg.alt = title;
+        }
+
+        // Función para cerrar el modal
+        function closeModal() {
+            var modal = document.getElementById("myModal");
+            modal.style.display = "none";
+        }
+
+        // Función para obtener la fecha y hora actual
+        function getCurrentDateTime() {
+            var now = new Date();
+            var datetimeElement = document.getElementById("datetime");
+            datetimeElement.textContent = now.toLocaleString();
+        }
+
+        // Llama a la función para mostrar la fecha y hora actual
+        getCurrentDateTime();
+
+        // Actualiza la fecha y hora cada segundo
+        setInterval(getCurrentDateTime, 1000);
+    </script>
+
+</body>
+</html>

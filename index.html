@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Zapatillas Store</title>
+</head>
+<body>
+
+    <header>
+        <h1>Zapatillas Store</h1>
+        <nav>
+            <ul>
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="types.html">Tipos de Jordan</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="inicio">
+        <h2>Nuestra Colección</h2>
+        
+        <div class="product">
+            <img src="https://basketzone.pl/zdjecia/2020/07/02/507/56/NIKE_AIR_JORDAN_1_RETRO_MID_GS_SMOKE_GREY_ks.png?v=resize" alt="Zapatilla 1" width=400>
+            <h3>Zapatilla Deportiva 1</h3>
+            <p>Una zapatilla cómoda y elegante para tus actividades deportivas.</p>
+            <p>Precio: $99.99</p>
+            <button id="changeColorButton">Cambiar Color</button>
+        </div>
+        <p id="userGreeting"></p>
+        <!-- Agrega más productos según sea necesario -->
+
+    </section>
+
+    <footer>
+        <p>&copy; 2023 Zapatillas Store</p>
+    </footer>
+
+    <script>
+
+
+        // Evento 3: Cambiar el color de fondo
+        document.getElementById('changeColorButton').addEventListener('click', function() {
+            var body = document.body;
+            body.style.backgroundColor = getRandomColor();
+        });
+
+        // Función para obtener un color hexadecimal aleatorio
+        function getRandomColor() {
+            var letters = '0123456789ABCDEF';
+            var color = '#';
+            for (var i = 0; i < 6; i++) {
+                color += letters[Math.floor(Math.random() * 16)];
+            }
+            return color;
+        }
+
+    </script>
+
+</body>
+</html>
