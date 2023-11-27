@@ -39,6 +39,15 @@
 
     <script>
 
+        // Evento 1: Nombre usuario
+        document.getElementById('userGreeting').innerHTML = 'Bienvenido ' + prompt('Ingresa tu nombre');
+
+        // Evento 2: Boton para esconder el boton de cambiar color
+        // que  salga el boton de ocultar
+        document.getElementById('changeColorButton').addEventListener('click', function() {
+            document.getElementById('changeColorButton').style.display = 'none';
+        });
+        
 
         // Evento 3: Cambiar el color de fondo
         document.getElementById('changeColorButton').addEventListener('click', function() {
