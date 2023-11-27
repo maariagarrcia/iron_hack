@@ -5,49 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
     <title>Tipos de Jordan - Zapatillas Store</title>
-    <style>
-        .jordan-type {
-            display: none; /* Oculta todas las imágenes por defecto */
-        }
-
-        .jordan-type.active {
-            display: block; /* Muestra solo la imagen activa */
-        }
-
-        /* Estilos para el modal */
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0,0,0,0.7);
-            justify-content: center;
-            align-items: center;
-        }
-
-        .modal-content {
-            max-width: 80%;
-            max-height: 80%;
-            margin: auto;
-        }
-
-        .modal-img {
-            width: 100%;
-            height: 100%;
-        }
-
-        /* Estilos adicionales para cerrar el modal */
-        .close {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            color: #fff;
-            font-size: 20px;
-            cursor: pointer;
-        }
-    </style>
 </head>
 <body>
 
@@ -90,18 +47,7 @@
                     title: "Jordan 12",
                     imageUrl: "https://images.squarespace-cdn.com/content/v1/5afceb6f5ffd2052611eff46/1594171233926-2EHB8J7IUH7BKK9UPE1C/air-jordan-12-university-gold-hallofsneakz.png?format=2500w",
                     description: "Las Jordan 12, lanzadas en 1996, destacan por sus detalles en piel y diseño robusto."
-                },
-                {
-                    title: "Jordan 3",
-                    imageUrl: "https://example.com/jordan3-image.png",
-                    description: "Descripción del Jordan 3."
-                },
-                {
-                    title: "Jordan 5",
-                    imageUrl: "https://example.com/jordan5-image.png",
-                    description: "Descripción del Jordan 5."
                 }
-                // Agrega más objetos de datos según sea necesario
             ];
 
             for (var i = 0; i < jordanData.length; i++) {
